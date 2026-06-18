@@ -1,0 +1,292 @@
+/* Performance-Diagnose-Panel, kompakt im RH-Blueprint-Look. Erbt die Token. */
+
+/* hidden durchsetzen: die Core-.rhbp-callout-Klasse setzt display und schlaegt
+   sonst das [hidden]-Attribut (UA-Style), die leere Box bliebe sichtbar. */
+.rhbp-perf-diag [hidden] {
+	display: none !important;
+}
+
+.rhbp-perf-diag__card {
+	margin-bottom: var(--rhbp-gap, 20px);
+}
+
+.rhbp-perf-diag__title {
+	margin: 0 0 10px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--rhbp-ink);
+}
+
+.rhbp-perf-diag__intro {
+	margin: 0 0 14px;
+	max-width: 64ch;
+	font-size: 13px;
+	color: var(--rhbp-muted);
+}
+
+/* Server-Health als Pill-Reihe */
+.rhbp-perf-health {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+}
+
+.rhbp-perf-chip__k {
+	opacity: 0.55;
+	font-weight: 400;
+}
+
+/* Kartenkopf mit Aktion rechts (z.B. Zahnrad) */
+.rhbp-perf-cardhead {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-bottom: 4px;
+}
+
+.rhbp-perf-cardhead .rhbp-perf-diag__title {
+	margin: 0;
+}
+
+/* Speicher-Verlauf als kompakte Zeile: Switch + Label + Werte + Sparkline */
+.rhbp-perf-memline {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 14px;
+	padding-top: 14px;
+	border-top: 1px solid var(--rhbp-border);
+	font-size: 13px;
+	color: var(--rhbp-text);
+	flex-wrap: wrap;
+}
+
+.rhbp-perf-memline__label {
+	flex: 0 0 auto;
+	font-weight: 600;
+	color: var(--rhbp-ink);
+}
+
+.rhbp-perf-memline__txt {
+	flex: 0 0 auto;
+	color: var(--rhbp-muted);
+}
+
+.rhbp-perf-memline__hint {
+	flex: 0 0 auto;
+	font-size: 12px;
+	color: var(--rhbp-muted);
+}
+
+/* Optimierungs-Reihe: Switch + Beschreibung */
+.rhbp-perf-optrow {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.rhbp-perf-optrow__text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.rhbp-perf-optrow__text strong {
+	font-size: 13px;
+	color: var(--rhbp-ink);
+}
+
+.rhbp-perf-optrow__text span {
+	font-size: 12px;
+	color: var(--rhbp-muted);
+	max-width: 64ch;
+}
+
+.rhbp-perf-spark {
+	width: 120px;
+	height: 26px;
+	flex: 0 0 auto;
+}
+
+.rhbp-perf-spark polyline {
+	fill: none;
+	stroke: var(--rhbp-blue);
+	stroke-width: 2;
+	stroke-linejoin: round;
+	stroke-linecap: round;
+	vector-effect: non-scaling-stroke;
+}
+
+#rhbp-perf-memreset {
+	margin-left: auto;
+}
+
+/* Scan-Leiste (Auswahl + Button) */
+.rhbp-perf-test__bar {
+	display: flex;
+	gap: 8px;
+	margin-bottom: 12px;
+	flex-wrap: wrap;
+}
+
+.rhbp-perf-test__url {
+	flex: 1 1 280px;
+	min-width: 0;
+	padding: 7px 11px;
+	border: 1px solid var(--rhbp-border);
+	border-radius: var(--rhbp-radius-sm, 8px);
+	background: #fff;
+	color: var(--rhbp-ink);
+	font-size: 13px;
+}
+
+.rhbp-perf-test__url:focus {
+	outline: none;
+	border-color: var(--rhbp-blue);
+	box-shadow: 0 0 0 2px var(--rhbp-blue-soft);
+}
+
+.rhbp-perf-scan__error {
+	margin-bottom: 12px;
+}
+
+.rhbp-perf-scan__note {
+	margin-bottom: 10px;
+	font-size: 12px;
+	color: var(--rhbp-muted);
+}
+
+/* Scoring-Tabelle (Core .rhbp-table, hier kompakter) */
+.rhbp-perf-tablewrap {
+	overflow-x: auto;
+}
+
+.rhbp-settings .rhbp-perf-table td {
+	padding: 8px 10px;
+	white-space: nowrap;
+}
+
+.rhbp-settings .rhbp-perf-table thead th {
+	padding: 8px 10px;
+}
+
+.rhbp-perf-cell-url {
+	max-width: 240px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 12px;
+}
+
+.rhbp-perf-warn {
+	color: var(--rhbp-amber-fg);
+	font-weight: 600;
+}
+
+/* Score-Badge */
+.rhbp-perf-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 32px;
+	height: 24px;
+	padding: 0 7px;
+	border-radius: 6px;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.rhbp-perf-badge--ok {
+	background: var(--rhbp-green-bg);
+	color: var(--rhbp-green-fg);
+}
+
+.rhbp-perf-badge--info {
+	background: var(--rhbp-amber-bg);
+	color: var(--rhbp-amber-fg);
+}
+
+.rhbp-perf-badge--warn {
+	background: var(--rhbp-red-bg);
+	color: var(--rhbp-red-fg);
+}
+
+/* PSI-Detailzeile (ausgeklappt unter einer Tabellenzeile) */
+.rhbp-perf-detail-row > td {
+	background: var(--rhbp-bg-subtle);
+}
+
+.rhbp-perf-row__detail {
+	padding: 14px;
+}
+
+.rhbp-perf-row__detail > * + * {
+	margin-top: 10px;
+}
+
+.rhbp-perf-psi__top {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.rhbp-perf-psi__label {
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--rhbp-ink);
+}
+
+.rhbp-perf-psi__metrics {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+}
+
+.rhbp-perf-psi__metric {
+	padding: 4px 9px;
+	border: 1px solid var(--rhbp-border);
+	border-radius: 6px;
+	background: #fff;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--rhbp-ink);
+	white-space: nowrap;
+}
+
+.rhbp-perf-psi__optitle {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--rhbp-ink);
+}
+
+.rhbp-perf-psi__opps {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.rhbp-perf-psi__opps li {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 6px 10px;
+	font-size: 13px;
+	background: #fff;
+	border-radius: 6px;
+}
+
+.rhbp-perf-psi__oppms {
+	flex: 0 0 auto;
+	font-weight: 600;
+	color: var(--rhbp-amber-fg);
+}
+
+.rhbp-perf-psi__none {
+	font-size: 13px;
+	color: var(--rhbp-muted);
+}

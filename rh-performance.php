@@ -4,8 +4,8 @@
  * Plugin Name:       RH Performance
  * Plugin URI:        https://github.com/herbeckrobin/rh-performance
  * Update URI:        https://github.com/herbeckrobin/rh-performance
- * Description:       LCP-Preload für CSS-Hintergrundbilder (die WordPress nicht selbst priorisiert). Teil der rh-blueprint Kollektion.
- * Version:           0.1.2
+ * Description:       Performance-Diagnose (Server-Health, Speicher-Verlauf, Seiten-Scoring mit PageSpeed Insights) und LCP-Preload. Teil der rh-blueprint Kollektion.
+ * Version:           0.3.0
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            Robin Herbeck
@@ -21,9 +21,10 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-define('RHPERF_VERSION', '0.1.2');
+define('RHPERF_VERSION', '0.3.0');
 define('RHPERF_PLUGIN_FILE', __FILE__);
 define('RHPERF_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('RHPERF_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 $rhperf_autoload = RHPERF_PLUGIN_DIR . 'vendor/autoload.php';
 

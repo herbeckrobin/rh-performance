@@ -6,7 +6,8 @@ namespace RhPerformance;
 
 use RhBlueprint\Core\Core;
 use RhBlueprint\Core\Settings\SettingsPage;
-use RhPerformance\Admin\PerformanceGroup;
+use RhPerformance\Admin\DiagnosticsPanel;
+use RhPerformance\Diagnostics\MemoryRecorder;
 
 /**
  * Bootstrap von rh-performance. Hängt am Core-Hook `rh-blueprint/core/booted`. Braucht nur den Core.
@@ -25,8 +26,9 @@ final class Plugin
     public static function onCoreBooted(Core $core): void
     {
         $core->settings()->registerTab('performance', __('Performance', 'rh-performance'), 80);
-        $core->settings()->registerGroup(new PerformanceGroup());
 
+        (new MemoryRecorder())->boot();
+        (new DiagnosticsPanel())->boot();
         (new Performance())->boot();
 
         add_filter('rh-blueprint/dashboard/quick_links', static function (array $links): array {

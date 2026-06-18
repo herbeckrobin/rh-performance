@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace RhPerformance;
 
-use RhPerformance\Admin\PerformanceGroup;
 use WP_Post;
 
 /**
@@ -21,7 +20,7 @@ final class Performance
 {
     public function boot(): void
     {
-        if (! (bool) rhbp_setting(PerformanceGroup::GROUP_ID, PerformanceGroup::FIELD_LCP_PRELOAD, true)) {
+        if (! Settings::lcpPreload()) {
             return;
         }
 
